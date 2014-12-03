@@ -1,0 +1,12 @@
+body {
+	font-family: Arial,Helvetica,"Nimbus Sans L",sans-serif;
+}
+
+form fieldset {
+	display: inline;
+}
+
+form label {
+	display: inline-block;
+	width: 150px;
+}

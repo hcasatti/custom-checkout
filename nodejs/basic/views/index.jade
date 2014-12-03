@@ -1,0 +1,58 @@
+html
+	head
+		title Custom Checkout example - Basic
+		link(rel='stylesheet',href='/css/main.css')
+	body
+		h1  Custom Checkout example - Basic
+
+		form#form-pay-mp(method="post", action='charge')
+			fieldset
+				p
+					label(for='amount') Amount:
+					input#amount(type='text', name='amount')
+				p
+					label(for='cardNumber') Card number:
+					input#cardNumber(type='text', data-checkout='cardNumber')
+				p
+					label(for='cardExpiration') Expiration date:
+					input#cardExpiration(type='text', placeholder='MM/YYYY', data-checkout='cardExpiration')
+				p
+					label(for='securityCode') CVV:
+					input#securityCode(type='text', data-checkout='securityCode')
+				p
+					label(for='cardholderName') Card holder name:
+					input#cardholderName(type='text', data-checkout='cardholderName')
+				p
+					label(for='docNumber') Document number:
+					input#docNumber(type='text', data-checkout='docNumber')
+				p
+					label(for='docType') Document type:
+					select#docType(data-checkout='docType')
+						option(value='DNI') DNI
+				input(type='submit', value='Pay !')
+
+		script(src="https://code.jquery.com/jquery-1.11.0.min.js")
+		script(src="https://secure.mlstatic.com/org-img/checkout/custom/1.0/checkout.js")
+		script.
+			/* Replace with your public_key */
+			Checkout.setPublishableKey("841d020b-1077-4742-ad55-7888a0f5aefa");
+
+			$("#form-pay-mp").submit(function( event ) {
+				var $form = $(this);
+				Checkout.createToken($form, mpResponseHandler);
+				event.preventDefault();
+				return false;
+			});
+
+			var mpResponseHandler = function(status, response) {
+				var $form = $('#form-pay-mp');
+
+				if (response.error) {
+					console.log(response);
+					alert("An error occurred");
+				} else {
+					var card_token_id = response.id;
+					$form.append($('<input type="hidden" id="card_token_id" name="card_token_id"/>').val(card_token_id));
+					$form.get(0).submit();
+				}
+			}

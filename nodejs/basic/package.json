@@ -1,0 +1,37 @@
+{
+  "name": "custom-checkout-basic",
+  "version": "0.0.1",
+  "description": "Basic Custom checkout integration",
+  "author": "Horacio Casatti <horacio.casatti@mercadolibre.com>",
+  "contributors": [
+    {
+      "name": "Ariel Leiva",
+      "email": "ariel.leiva@mercadolibre.com"
+    },
+    {
+      "name": "Sebastián Gun",
+      "email": "sebastian.gun@mercadolibre.com"
+    }
+  ],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hcasatti/custom-checkout/nodejs/basic"
+  },
+  "bugs": {
+    "url": "https://github.com/hcasatti/custom-checkout/issues"
+  },
+  "keywords": [
+    "mercadopago",
+    "checkout",
+    "payment"
+  ],
+  "dependencies": {
+    "body-parser": "^1.10.0",
+    "express": "^4.10.4",
+    "jade": "^1.8.1",
+    "mercadopago": "^0.2.2",
+    "request": "^2.49.0"
+  },
+  "devDependencies": {}
+}
