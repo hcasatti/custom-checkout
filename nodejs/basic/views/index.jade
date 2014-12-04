@@ -25,10 +25,8 @@ html
 				p
 					label(for='docNumber') Document number:
 					input#docNumber(type='text', data-checkout='docNumber')
-				p
-					label(for='docType') Document type:
-					select#docType(data-checkout='docType')
-						option(value='DNI') DNI
+				input(data-checkout="docType", type="hidden", value="DNI")
+
 				input(type='submit', value='Pay !')
 
 		script(src="https://code.jquery.com/jquery-1.11.0.min.js")
